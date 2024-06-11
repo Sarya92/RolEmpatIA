@@ -1,3 +1,5 @@
+![RolEmpatIA](/8.jpg)
+
 # RolEmpatIA 
 
 ## Descripción del Proyecto
@@ -66,6 +68,65 @@ print("Palabras similares a 'dano':", similar_words_dano)
 ```
 _Palabras similares a 'dano': [('cercenemos', 0.46414145827293396), ('pequeno', 0.4534483850002289), ('desalmados', 0.43120548129081726), ('cazadores', 0.4102203845977783), ('pretencioso', 0.40368127822875977), ('caso', 0.3865625858306885), ('requieren', 0.385661780834198), ('vas', 0.3841119706630707), ('sali', 0.3817184567451477), ('ventrue', 0.3800927400588989)]_
 
-Como podemos ver, la vectorización tiene una visión lógica dado el tamaño del dataset. 
+Como podemos ver, la vectorización tiene una visión lógica dado el tamaño del dataset. Una vez verificado esot vamos con la clusterización para organizar los datos en diferentes categorías.
+
+## Clusterización
+
+Configuramos y aplicamos HDBScan y generamos unos datos ficticios para comprobar que funciona correctamente con _make_blobs_ para realizar la prueba de clusterización. 
+
+Utilizamos esta muestra para aplicarlos a los datos y trabajamos con ello. 
+
+## Análisis de Sentimientos y Análisis de Temas/Roles
+
+Por último decidimos utilizar TextBlob con la finalidad de hacer agrupaciones, apoyados con HDBScan y con todo lo aprendido, para añadir un perfil Psicológico ajustado a los factores DISC, pudiedon así identificar las palabras más comunes, el sentimiento promedio y los temas/roles identificados.
+```python
+def sentiment_analysis(texts):
+    sentiments = [TextBlob(text).sentiment.polarity for text in texts]
+    average_sentiment = sum(sentiments) / len(sentiments)
+    return average_sentiment
+
+def topic_analysis(texts):
+    disc_keywords = {
+        'D': ['combate', 'liderazgo', 'desafío', 'estrategia', 'competencia'],
+        'I': ['diálogo', 'colaboración', 'amistad', 'negociación', 'influencia'],
+        'S': ['aventura', 'camaradería', 'tradición', 'familia', 'hogar'],
+        'C': ['estrategia', 'misión', 'disciplina', 'objetivos', 'responsabilidad']
+    }
+    
+    temas_comunes = [keyword for keywords in disc_keywords.values() for keyword in keywords]
+    
+    temas_encontrados = {}
+    
+    for tema in temas_comunes:
+        temas_encontrados[tema] = sum(text.lower().count(tema) for text in texts)
+    
+    return temas_encontrados
+
+```
+Con ello, realizamos análisis de los diferentes clusters generados, como podemos ver en el archivo ANALISIS_CLUSTERS_PRE_EMBEDDINGS
+
+## Testing (TestRol)
+
+Como pequeñas pruebas, decidimos ir preparando el camino para poder implementar el chatbot en próximas iteraciones. Para ello, realizamos una estructura de análisis según embeddings, con una serie de definiciones para cada elemento DISC como los siguientes: 
+_("Me siento motivado por nuevas experiencias", "Influyente"),
+    ("Me gusta estar rodeado de personas", "Influyente"),
+    ("Disfruto de la tranquilidad y la paz", "Estable"),
+    ("Prefiero mantener un ambiente predecible", "Estable"),
+    ("Me gusta resolver conflictos de manera justa", "Dominante"),
+    ("Me enfoco en hacer las cosas correctamente", "Dominante"),
+    ("Siempre busco mejorar mis habilidades", "Dominante"),
+    ("Valoro el cumplimiento de las normas", "Concienzudo"),
+    ("Disfruto aprendiendo cosas nuevas", "Concienzudo")_
+
+También utilizamos un modelo Doc2Vec 
+
+Proyecto realizado por: 
+
+- * Iván Bueno Ferreyra.
+- * Víctor Moreno García.
+- * Sara Poderoso Serrano.
+- * Gemma Rodríguez Martínez.
+
+Para Saturdays.IA Madrid en la edición 2024
 
 
