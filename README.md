@@ -1,7 +1,10 @@
-# RolEmpatIA
+# RolEmpatIA 
 
 ## Descripción del Proyecto
 En una sociedad cada vez más individualizada, la creación de vínculos reales y significativos puede ser un desafío. El objetivo de RolEmpatIA es ofrecer un entorno seguro donde los usuarios puedan experimentar y practicar diferentes estilos de socialización sin el temor al fracaso o las consecuencias negativas. Nuestro chatbot, diseñado para interactuar de manera natural y empática, ofrece una forma divertida y educativa de mejorar las interacciones sociales a través de juegos de rol.
+
+## Herramientas 
+Desde el equipo trabajamos con diversas plataformas, desde UiPath para WebScarp a Colab, Jupyter Notebook o Visual Studio Code para programar. Es por ello importante aclarar que para instalar las dependencias en VSC utilizamos Poetry. 
 
 ## Dataset
 En este caso, el data set es creado. No encontramos dataset en español que cumplieran los requisitos que necesitábamos. Procedimos a realizar WebScraping en foros de rol donde había partidas terminadas, pero al ser creada por los usuarios sin tener un patron claro, tras comenzar el WebScraping con Uipath, Scrapy o BeautifulSoup, finalmente completamos el dataset de forma manual, extrayendo nosotras mismas el dataset de dichos foros. Es por ello que no es tan extenso como nos gustaría. Además, decidimos hacer una selección de qué partidas utilizar, ya que había muchas +18, +21 o algunas con un claro componente folklórico como "Poseidos en Vallekas" que utilizaba personajes históricos del imaginario español como Antonio Resines, Bertín Osborne o el Rey Emérito Juan Carlos de Borbón. 
@@ -48,18 +51,21 @@ similar_words_magia = rol2vec.wv.most_similar("magia")
 print("Palabras similares a 'magia':", similar_words_magia)
 
 ```
-Palabras similares a 'magia': [('continuo', 0.5517002940177917), ('grabo', 0.46825912594795227), ('lado', 0.46211525797843933), ('disculpad', 0.42598873376846313), ('forma', 0.41744449734687805), ('cautivo', 0.4152204692363739), ('ocurriros', 0.41037052869796753), ('sintieron', 0.4026062786579132), ('jugar', 0.40196770429611206), ('guardias', 0.3986649513244629)]
+_Palabras similares a 'magia': [('continuo', 0.5517002940177917), ('grabo', 0.46825912594795227), ('lado', 0.46211525797843933), ('disculpad', 0.42598873376846313), ('forma', 0.41744449734687805), ('cautivo', 0.4152204692363739), ('ocurriros', 0.41037052869796753), ('sintieron', 0.4026062786579132), ('jugar', 0.40196770429611206), ('guardias', 0.3986649513244629)]_
 
 ```python
 similar_words_disciplina = rol2vec.wv.most_similar("disciplina")
 print("Palabras similares a 'disciplina':", similar_words_disciplina)
 
 ```
-Palabras similares a 'disciplina': [('recuerdos', 0.5104620456695557), ('creo', 0.4909777045249939), ('horda', 0.4846702516078949), ('marcho', 0.451127290725708), ('asientos', 0.38866427540779114), ('embargo', 0.38759520649909973), ('rebosa', 0.3807078003883362), ('detente', 0.37873977422714233), ('pilares', 0.3767443001270294), ('sorprendente', 0.37432533502578735)]
+_Palabras similares a 'disciplina': [('recuerdos', 0.5104620456695557), ('creo', 0.4909777045249939), ('horda', 0.4846702516078949), ('marcho', 0.451127290725708), ('asientos', 0.38866427540779114), ('embargo', 0.38759520649909973), ('rebosa', 0.3807078003883362), ('detente', 0.37873977422714233), ('pilares', 0.3767443001270294), ('sorprendente', 0.37432533502578735)]_
 ```python
 similar_words_dano = rol2vec.wv.most_similar("dano")
 print("Palabras similares a 'dano':", similar_words_dano)
 
 ```
-Palabras similares a 'dano': [('cercenemos', 0.46414145827293396), ('pequeno', 0.4534483850002289), ('desalmados', 0.43120548129081726), ('cazadores', 0.4102203845977783), ('pretencioso', 0.40368127822875977), ('caso', 0.3865625858306885), ('requieren', 0.385661780834198), ('vas', 0.3841119706630707), ('sali', 0.3817184567451477), ('ventrue', 0.3800927400588989)]
+_Palabras similares a 'dano': [('cercenemos', 0.46414145827293396), ('pequeno', 0.4534483850002289), ('desalmados', 0.43120548129081726), ('cazadores', 0.4102203845977783), ('pretencioso', 0.40368127822875977), ('caso', 0.3865625858306885), ('requieren', 0.385661780834198), ('vas', 0.3841119706630707), ('sali', 0.3817184567451477), ('ventrue', 0.3800927400588989)]_
+
+Como podemos ver, la vectorización tiene una visión lógica dado el tamaño del dataset. 
+
 
