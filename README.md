@@ -1,4 +1,4 @@
-![RolEmpatIA](/8.jpg)
+![RolEmpatIA](8.jpg)
 
 # RolEmpatIA 
 
